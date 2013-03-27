@@ -31,6 +31,10 @@ def wrt_output(filename, content):
     f.close()
 
 
+def write_xml_doc(filename, doc):
+    wrt_output(filename, doc.toxml())
+
+
 def total_seconds(td):
     return (td.microseconds + (td.seconds + td.days * 24 * 3600) * 1e6) / 1e6
 
@@ -109,4 +113,4 @@ def enable(filename=None):
         root.setAttribute("errors", '0')
         root.setAttribute("time", '0')
         doc.appendChild(root)
-        wrt_output(output_filename, doc.toxml())
+        write_xml_doc(output_filename, doc)
