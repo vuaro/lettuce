@@ -194,3 +194,11 @@ def test_xunit_output_with_background_section():
 
     assert_equals(1, len(called), "Function not called")
     xunit_output.wrt_output = old
+
+
+@with_setup(prepare_stdout, registry.clear)
+def test_xunit_xml_output_with_no_errors():
+    'Test xunit doc xml output'
+
+    runner = Runner(feature_name('xunit_unicode_and_bytestring_mixing'), enable_xunit=True)
+    runner.run()
