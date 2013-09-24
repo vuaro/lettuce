@@ -126,6 +126,7 @@ class ThreadedServer(multiprocessing.Process):
         if address == '0.0.0.0' or address == 'localhost':
             address = '127.0.0.1'
 
+        address = getattr(settings, 'LETTUCE_NOSERVER_HOST', address)
         return address
 
     def wait(self):
